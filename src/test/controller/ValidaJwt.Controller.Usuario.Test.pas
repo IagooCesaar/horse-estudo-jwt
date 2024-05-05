@@ -35,6 +35,12 @@ type
       ANome, AEmail, ASenha, AErro: string;
       ARepeteNome, ARepeteEmail, ARepeteSenha: Integer
     );
+
+    [Test]
+    procedure Test_NaoCriarUsuario_EmailExistente;
+
+    [Test]
+    procedure Test_NaoCriarUsuario_SemBody;
   end;
 
 implementation
@@ -103,6 +109,48 @@ begin
 
   var LError := TValidaJwtAppTest.GetInstance.ParteError(LResponse.Content);
   Assert.Contains(LError.error, AErro);
+  LError.Free;
+end;
+
+procedure TValidaJwtControllerUsuarioTest.Test_NaoCriarUsuario_EmailExistente;
+begin
+  var LDto := TValidaJwtDtoReqCriarUsuario.Create;
+  LDto.Nome := 'Nome do Usuário';
+  LDto.Email := 'email-controller-existente@dominio.com';
+  LDto.Senha := 'senha-complexa';
+
+  var LResponseOk := TValidaJwtAppTest.GetInstance
+    .PreparaRequest
+    .Resource('/usuarios')
+    .AddBody(TJson.ObjectToClearJsonObject(LDto))
+    .Post();
+
+  var LResponse := TValidaJwtAppTest.GetInstance
+    .PreparaRequest
+    .Resource('/usuarios')
+    .AddBody(TJson.ObjectToClearJsonObject(LDto))
+    .Post();
+
+  Assert.AreEqual(THTTPStatus.PreconditionFailed, THTTPStatus(LResponse.StatusCode));
+
+  var LError := TValidaJwtAppTest.GetInstance.ParteError(LResponse.Content);
+  Assert.Contains(LError.error, 'Já existe um usuário cadastrado com o e-mail');
+  LError.Free;
+
+  LDto.Free;
+end;
+
+procedure TValidaJwtControllerUsuarioTest.Test_NaoCriarUsuario_SemBody;
+begin
+  var LResponse := TValidaJwtAppTest.GetInstance
+    .PreparaRequest
+    .Resource('/usuarios')
+    .Post();
+
+  Assert.AreEqual(THTTPStatus.BadRequest, THTTPStatus(LResponse.StatusCode));
+
+  var LError := TValidaJwtAppTest.GetInstance.ParteError(LResponse.Content);
+  Assert.Contains(LError.error, 'O body não estava no formato esperado');
   LError.Free;
 end;
 
