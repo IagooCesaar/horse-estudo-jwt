@@ -34,6 +34,9 @@ type
       ANome, AEmail, ASenha, AErro: string;
       ARepeteNome, ARepeteEmail, ARepeteSenha: Integer
     );
+
+    [Test]
+    procedure Test_NaoCriarUsuario_EmailExistente;
   end;
 
 implementation
@@ -111,6 +114,31 @@ begin
     LJson.Free;
     LDto.Free;
   end;
+end;
+
+procedure ValidaJwtModelUsuarioTest.Test_NaoCriarUsuario_EmailExistente;
+begin
+  var LDto := TValidaJwtDtoReqCriarUsuario.Create;
+  LDto.Nome := 'Nome do Usuário';
+  LDto.Email := 'email_existente@dominio.com';
+  LDto.Senha := 'senha-complexa';
+
+  var LUsuario := TValidaJwtModelFactory.New
+    .Usuario
+    .CriarUsuario(LDto);
+
+  Assert.WillRaiseWithMessageRegex(
+    procedure begin
+      TValidaJwtModelFactory.New
+        .Usuario
+        .CriarUsuario(LDto)
+    end,
+    EHorseException,
+    'Já existe um usuário cadastrado com o e-mail'
+  );
+
+  LDto.Free;
+  LUsuario.Free;
 end;
 
 initialization
