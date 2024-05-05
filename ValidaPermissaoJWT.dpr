@@ -8,9 +8,15 @@ uses
   System.SysUtils,
   App in 'src\App.pas';
 
+var LApp: TApp;
 begin
   try
-    { TODO -oUser -cConsole Main : Insert code here }
+    try
+      LApp := TApp.Create;
+      LApp.Start(9000);
+    finally
+      LApp.Free;
+    end;
   except
     on E: Exception do
       Writeln(E.ClassName, ': ', E.Message);
