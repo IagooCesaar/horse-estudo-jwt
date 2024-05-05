@@ -20,6 +20,8 @@ type
 
     { IValidaJwtModelUsuario }
     function CriarUsuario(ADto: TValidaJwtDtoReqCriarUsuario): TValidaJwtDtoRespPerfil;
+    function ObterPorId(AId: Integer): TValidaJwtDtoRespPerfil;
+    function ObterTodos: TValidaJwtDtoRespPerfilLista;
   end;
 
 implementation
@@ -54,7 +56,6 @@ begin
     FreeAndNil(LExisteEmail);
   end;
 
-
   var LUsuario := TValidaJwtModelDaoFactory.New
     .Usuario
     .CriarUsuario(ADto);
@@ -86,6 +87,32 @@ end;
 class function TValidaJwtModelUsuario.New: IValidaJwtModelUsuario;
 begin
   Result := Self.Create;
+end;
+
+function TValidaJwtModelUsuario.ObterPorId(AId: Integer): TValidaJwtDtoRespPerfil;
+begin
+  var LUsuario := TValidaJwtModelDaoFactory.New
+    .Usuario
+    .ObterPorId(AId);
+
+  if not Assigned(LUsuario)
+  then raise EHorseException.New
+    .Status(THTTPStatus.NotFound)
+    .&Unit(Self.UnitName)
+    .Error(Format('Não foi possível encontrar um usuário com o ID %d.', [AId]));
+
+  Result := Mapper(LUsuario);
+  LUsuario.Free;
+end;
+
+function TValidaJwtModelUsuario.ObterTodos: TValidaJwtDtoRespPerfilLista;
+begin
+  var LUsuarios := TValidaJwtModelDaoFactory.New
+    .Usuario
+    .ObterTodos;
+
+  Result := Mapper(LUsuarios);
+  LUsuarios.Free;
 end;
 
 end.

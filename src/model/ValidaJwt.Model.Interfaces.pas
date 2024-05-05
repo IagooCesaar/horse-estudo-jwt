@@ -10,6 +10,8 @@ type
   IValidaJwtModelUsuario = interface
     ['{D34FABE8-C65D-4C62-A265-FEF97E427DC9}']
     function CriarUsuario(ADto: TValidaJwtDtoReqCriarUsuario): TValidaJwtDtoRespPerfil;
+    function ObterPorId(AId: Integer): TValidaJwtDtoRespPerfil;
+    function ObterTodos: TValidaJwtDtoRespPerfilLista;
   end;
 
   IValidaJwtModelFactory = interface
