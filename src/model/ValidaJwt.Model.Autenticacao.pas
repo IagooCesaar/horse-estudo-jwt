@@ -23,6 +23,7 @@ implementation
 uses
   System.SysUtils,
   System.DateUtils,
+  System.JSON,
 
   Horse,
   Horse.Exception,
@@ -36,7 +37,11 @@ uses
   ValidaJwt.Model.Entity.TokenUsuario;
 
 const
-  C_CHAVE_TOKEN = 'chave-secreta';
+  C_TOKEN_KEY = 'chave-secreta';
+  C_TOKEN_EXPIRES_IN_MINUTES = 30;
+
+  C_REFRESH_TOKEN_KEY = 'outra-chave-secreta';
+  C_REFRESH_TOKEN_EXPIRES_IN_DAYS = 30;
 
 { TValidaJwtModelAutenticacao }
 
@@ -65,24 +70,40 @@ begin
     .Usuario
     .ObterPorId(LUsuario.Id);
 
-  var LJwt := TJOSEProcess.New
+  var LDataExpiracao := IncMinute(Now, C_TOKEN_EXPIRES_IN_MINUTES);
+
+  var LJwtToken := TJOSEProcess.New
     .SetIssuer('Delphi ValidaJwt')
     .SetIssuedAt(Now)
     .SetExpiration(Now + 1)
     .SetAlgorithm(TJOSEAlgorithmId.HS256)
-    .SetKey(C_CHAVE_TOKEN)
+    .SetKey(C_TOKEN_KEY)
+    .SetSubject(LUsuario.Id.ToString)
+    .SetExpiration(LDataExpiracao)
     .Build
     .GetCompactToken;
 
-  Result.Token := LJwt;
-  Result.RefreshToken := 'refresh-token';
+  var LJwtRefreshToken := TJOSEProcess.New
+    .SetIssuer('Delphi ValidaJwt')
+    .SetIssuedAt(Now)
+    .SetExpiration(Now + 1)
+    .SetAlgorithm(TJOSEAlgorithmId.HS256)
+    .SetKey(C_TOKEN_KEY)
+    .SetSubject(LUsuario.Id.ToString)
+    .SetExpiration(IncDay(Now, C_REFRESH_TOKEN_EXPIRES_IN_DAYS))
+    .SetCustomClaim('email', LUsuario.Email)
+    .Build
+    .GetCompactToken;
+
+  Result.Token := LJwtToken;
+  Result.RefreshToken := LJwtRefreshToken;
 
   var LToken := TValidaJwtModelEntityTokenUsuario.Create;
   LToken.IdUsuario := LUsuario.Id;
   LToken.Token := Result.Token;
   LToken.RefreshToken := Result.RefreshToken;
   LToken.DataCricao := Now;
-  LToken.DataExpiracao := IncMinute(Now, 30);
+  LToken.DataExpiracao := LDataExpiracao;
 
   var LTokenUsuario := TValidaJwtModelDaoFactory.New
     .TokenUsuario
