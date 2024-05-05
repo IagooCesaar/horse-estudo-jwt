@@ -13,7 +13,22 @@ uses
   DUnitX.Loggers.Xml.NUnit,
   {$ENDIF }
   DUnitX.TestFramework,
-  ValidaJwt.Model.Usuario.Test in 'src\test\model\ValidaJwt.Model.Usuario.Test.pas';
+  ValidaJwt.Model.Usuario.Test in 'src\test\model\ValidaJwt.Model.Usuario.Test.pas',
+  ValidaJwt.Controllers.AuthenticationRoutes in 'src\controllers\ValidaJwt.Controllers.AuthenticationRoutes.pas',
+  ValidaJwt.Controllers.PrivateRoutes in 'src\controllers\ValidaJwt.Controllers.PrivateRoutes.pas',
+  ValidaJwt.Controllers.PublicRoutes in 'src\controllers\ValidaJwt.Controllers.PublicRoutes.pas',
+  ValidaJwt.Controllers.Registry in 'src\controllers\ValidaJwt.Controllers.Registry.pas',
+  ValidaJwt.Dto.Req.ManutUsuario in 'src\dto\ValidaJwt.Dto.Req.ManutUsuario.pas',
+  ValidaJwt.Dto.Resp.Perfil in 'src\dto\ValidaJwt.Dto.Resp.Perfil.pas',
+  ValidaJwt.Model.Factory in 'src\model\ValidaJwt.Model.Factory.pas',
+  ValidaJwt.Model.Interfaces in 'src\model\ValidaJwt.Model.Interfaces.pas',
+  ValidaJwt.Model.Usuario in 'src\model\ValidaJwt.Model.Usuario.pas',
+  ValidaJwt.Model.Dao.Factory in 'src\model\dao\ValidaJwt.Model.Dao.Factory.pas',
+  ValidaJwt.Model.Dao.Interfaces in 'src\model\dao\ValidaJwt.Model.Dao.Interfaces.pas',
+  ValidaJwt.Model.Dao.TokenUsuario.InMemory in 'src\model\dao\in-memory\ValidaJwt.Model.Dao.TokenUsuario.InMemory.pas',
+  ValidaJwt.Model.Dao.Usuario.InMemory in 'src\model\dao\in-memory\ValidaJwt.Model.Dao.Usuario.InMemory.pas',
+  ValidaJwt.Model.Entity.TokenUsuario in 'src\model\entity\ValidaJwt.Model.Entity.TokenUsuario.pas',
+  ValidaJwt.Model.Entity.Usuario in 'src\model\entity\ValidaJwt.Model.Entity.Usuario.pas';
 
 { keep comment here to protect the following conditional from being removed by the IDE when adding a unit }
 {$IFNDEF TESTINSIGHT}

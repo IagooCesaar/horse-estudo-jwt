@@ -133,6 +133,21 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="src\test\model\ValidaJwt.Model.Usuario.Test.pas"/>
+        <DCCReference Include="src\controllers\ValidaJwt.Controllers.AuthenticationRoutes.pas"/>
+        <DCCReference Include="src\controllers\ValidaJwt.Controllers.PrivateRoutes.pas"/>
+        <DCCReference Include="src\controllers\ValidaJwt.Controllers.PublicRoutes.pas"/>
+        <DCCReference Include="src\controllers\ValidaJwt.Controllers.Registry.pas"/>
+        <DCCReference Include="src\dto\ValidaJwt.Dto.Req.ManutUsuario.pas"/>
+        <DCCReference Include="src\dto\ValidaJwt.Dto.Resp.Perfil.pas"/>
+        <DCCReference Include="src\model\ValidaJwt.Model.Factory.pas"/>
+        <DCCReference Include="src\model\ValidaJwt.Model.Interfaces.pas"/>
+        <DCCReference Include="src\model\ValidaJwt.Model.Usuario.pas"/>
+        <DCCReference Include="src\model\dao\ValidaJwt.Model.Dao.Factory.pas"/>
+        <DCCReference Include="src\model\dao\ValidaJwt.Model.Dao.Interfaces.pas"/>
+        <DCCReference Include="src\model\dao\in-memory\ValidaJwt.Model.Dao.TokenUsuario.InMemory.pas"/>
+        <DCCReference Include="src\model\dao\in-memory\ValidaJwt.Model.Dao.Usuario.InMemory.pas"/>
+        <DCCReference Include="src\model\entity\ValidaJwt.Model.Entity.TokenUsuario.pas"/>
+        <DCCReference Include="src\model\entity\ValidaJwt.Model.Entity.Usuario.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
@@ -179,6 +194,18 @@
                 <DeployFile LocalName="Win32\Debug\ValidaPermissaoJWT_Test.exe" Configuration="Debug" Class="ProjectOutput">
                     <Platform Name="Win32">
                         <RemoteName>ValidaPermissaoJWT_Test.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Win64\Debug\ValidaPermissaoJWT_Test.exe" Configuration="Debug" Class="ProjectOutput">
+                    <Platform Name="Win64">
+                        <RemoteName>ValidaPermissaoJWT_Test.exe</RemoteName>
+                        <Overwrite>true</Overwrite>
+                    </Platform>
+                </DeployFile>
+                <DeployFile LocalName="Win64\Debug\ValidaPermissaoJWT_Test.rsm" Configuration="Debug" Class="DebugSymbols">
+                    <Platform Name="Win64">
+                        <RemoteName>ValidaPermissaoJWT_Test.rsm</RemoteName>
                         <Overwrite>true</Overwrite>
                     </Platform>
                 </DeployFile>

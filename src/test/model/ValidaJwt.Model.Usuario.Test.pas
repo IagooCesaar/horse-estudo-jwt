@@ -13,6 +13,9 @@ type
 
 implementation
 
+uses
+  ValidaJwt.Model.Factory;
+
 initialization
   TDUnitX.RegisterTestFixture(ValidaJwtModelUsuarioTest);
 
