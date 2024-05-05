@@ -27,11 +27,16 @@ uses
   Horse,
   Horse.Exception,
   Horse.JsonInterceptor.Helpers,
+  JOSE.Producer,
+  JOSE.Core.JWA,
 
   ValidaJwt.Model.Factory,
   ValidaJwt.Model.Dao.Factory,
 
   ValidaJwt.Model.Entity.TokenUsuario;
+
+const
+  C_CHAVE_TOKEN = 'chave-secreta';
 
 { TValidaJwtModelAutenticacao }
 
@@ -60,7 +65,16 @@ begin
     .Usuario
     .ObterPorId(LUsuario.Id);
 
-  Result.Token := 'token';
+  var LJwt := TJOSEProcess.New
+    .SetIssuer('Delphi ValidaJwt')
+    .SetIssuedAt(Now)
+    .SetExpiration(Now + 1)
+    .SetAlgorithm(TJOSEAlgorithmId.HS256)
+    .SetKey(C_CHAVE_TOKEN)
+    .Build
+    .GetCompactToken;
+
+  Result.Token := LJwt;
   Result.RefreshToken := 'refresh-token';
 
   var LToken := TValidaJwtModelEntityTokenUsuario.Create;
