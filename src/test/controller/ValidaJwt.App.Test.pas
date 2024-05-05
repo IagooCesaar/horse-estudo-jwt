@@ -34,7 +34,7 @@ uses
 constructor TValidaJwtAppTest.Create;
 begin
   FApp := TApp.Create;
-  FApp.Start(9000);
+  FApp.Start(9001);
 end;
 
 destructor TValidaJwtAppTest.Destroy;
