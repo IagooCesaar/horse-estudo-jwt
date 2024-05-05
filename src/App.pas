@@ -32,7 +32,9 @@ uses
   Horse,
   Horse.Jhonson,
   Horse.HandleException,
-  Horse.Compression;
+  Horse.Compression,
+
+  ValidaJwt.Controllers.Registry;
 
 { TApp }
 
@@ -51,6 +53,8 @@ begin
     .Use(Jhonson('UTF-8'))
     //HandleException deverá ser o último Middleware
     .Use(HandleException);
+
+  ValidaJwt.Controllers.Registry.DoRegistry(FContext);
 end;
 
 destructor TApp.Destroy;

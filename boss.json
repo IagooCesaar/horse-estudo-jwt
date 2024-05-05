@@ -9,6 +9,7 @@
 		"github.com/hashload/handle-exception": "^0.1.9",
 		"github.com/hashload/horse": "^3.1.6",
 		"github.com/hashload/horse-compression": "^1.1.11",
-		"github.com/hashload/jhonson": "^1.1.8"
+		"github.com/hashload/jhonson": "^1.1.8",
+		"github.com/iagoocesaar/horse-jsoninterceptor": "^0.0.9"
 	}
 }

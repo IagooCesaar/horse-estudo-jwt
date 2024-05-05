@@ -6,7 +6,11 @@ program ValidaPermissaoJWT;
 
 uses
   System.SysUtils,
-  App in 'src\App.pas';
+  App in 'src\App.pas',
+  ValidaJwt.Controllers.Registry in 'src\controllers\ValidaJwt.Controllers.Registry.pas',
+  ValidaJwt.Controllers.PrivateRoutes in 'src\controllers\ValidaJwt.Controllers.PrivateRoutes.pas',
+  ValidaJwt.Controllers.AuthenticationRoutes in 'src\controllers\ValidaJwt.Controllers.AuthenticationRoutes.pas',
+  ValidaJwt.Controllers.PublicRoutes in 'src\controllers\ValidaJwt.Controllers.PublicRoutes.pas';
 
 var LApp: TApp;
 begin

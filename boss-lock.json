@@ -33,6 +33,14 @@
 			"artifacts": {},
 			"failed": false,
 			"changed": false
+		},
+		"github.com/iagoocesaar/horse-jsoninterceptor": {
+			"name": "horse-jsoninterceptor",
+			"version": "0.0.9",
+			"hash": "fe2290e64e122b6f0c65be2d29933bfd",
+			"artifacts": {},
+			"failed": false,
+			"changed": false
 		}
 	}
 }
