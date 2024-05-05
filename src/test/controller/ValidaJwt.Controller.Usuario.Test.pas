@@ -41,6 +41,15 @@ type
 
     [Test]
     procedure Test_NaoCriarUsuario_SemBody;
+
+    [Test]
+    procedure Test_ObterUsuarioPorId;
+
+    [Test]
+    procedure Test_NaoObterUsuarioPorId_Inexistente;
+
+    [Test]
+    procedure Test_ObterTodosUsuarios;
   end;
 
 implementation
@@ -56,7 +65,8 @@ uses
 
   ValidaJwt.App.Test,
   ValidaJwt.Model.Factory,
-  ValidaJwt.Dto.Req.ManutUsuario;
+  ValidaJwt.Dto.Req.ManutUsuario,
+  ValidaJwt.Dto.Resp.Perfil;
 
 { TValidaJwtControllerUsuarioTest }
 
@@ -152,6 +162,68 @@ begin
   var LError := TValidaJwtAppTest.GetInstance.ParteError(LResponse.Content);
   Assert.Contains(LError.error, 'O body não estava no formato esperado');
   LError.Free;
+end;
+
+procedure TValidaJwtControllerUsuarioTest.Test_NaoObterUsuarioPorId_Inexistente;
+begin
+  var LResponse := TValidaJwtAppTest.GetInstance
+    .PreparaRequest
+    .Resource('/usuarios/{id}')
+    .AddUrlSegment('id', (-1).ToString)
+    .Get();
+
+  Assert.AreEqual(THTTPStatus.NotFound, THTTPStatus(LResponse.StatusCode));
+
+  var LError := TValidaJwtAppTest.GetInstance.ParteError(LResponse.Content);
+  Assert.Contains(LError.error, 'Não foi possível encontrar um usuário com o ID');
+  LError.Free;
+end;
+
+procedure TValidaJwtControllerUsuarioTest.Test_ObterTodosUsuarios;
+begin
+  var LResponse := TValidaJwtAppTest.GetInstance
+    .PreparaRequest
+    .Resource('/usuarios')
+    .Get();
+
+  Assert.IsTrue(LResponse.StatusCode in [200, 204], 'Não obteve 200 ou 204');
+end;
+
+procedure TValidaJwtControllerUsuarioTest.Test_ObterUsuarioPorId;
+begin
+  var LDto := TValidaJwtDtoReqCriarUsuario.Create;
+  LDto.Nome := 'Nome do Usuário';
+  LDto.Email := 'email-controller_get@dominio.com';
+  LDto.Senha := 'senha-complexa';
+
+  var LResponse := TValidaJwtAppTest.GetInstance
+    .PreparaRequest
+    .Resource('/usuarios')
+    .AddBody(TJson.ObjectToClearJsonObject(LDto))
+    .Post();
+
+  Assert.AreEqual(THTTPStatus.Created, THTTPStatus(LResponse.StatusCode));
+
+  var LUsuarioCriado := TJson.ClearJsonAndConvertToObject
+    <TValidaJwtDtoRespPerfil>(LResponse.Content);
+
+  var LResponse2 := TValidaJwtAppTest.GetInstance
+    .PreparaRequest
+    .Resource('/usuarios/{id}')
+    .AddUrlSegment('id', LUsuarioCriado.Id.ToString)
+    .Get();
+
+  Assert.AreEqual(THTTPStatus.Ok, THTTPStatus(LResponse2.StatusCode));
+
+  var LUsuario := TJson.ClearJsonAndConvertToObject
+    <TValidaJwtDtoRespPerfil>(LResponse2.Content);
+
+  Assert.AreEqual(LUsuarioCriado.Nome, LUsuario.Nome);
+  Assert.AreEqual(LUsuarioCriado.Id, LUsuario.Id);
+
+  LDto.Free;
+  LUsuarioCriado.Free;
+  LUsuario.Free;
 end;
 
 initialization

@@ -13,14 +13,21 @@ type
 
     { IValidaJwtModelFactory }
     function Usuario: IValidaJwtModelUsuario;
+    function Autenticacao: IValidaJwtModelAutenticacao;
   end;
 
 implementation
 
 uses
-  ValidaJwt.Model.Usuario;
+  ValidaJwt.Model.Usuario,
+  ValidaJwt.Model.Autenticacao;
 
 { TValidaJwtModelFactory }
+
+function TValidaJwtModelFactory.Autenticacao: IValidaJwtModelAutenticacao;
+begin
+  Result := TValidaJwtModelAutenticacao.New;
+end;
 
 class function TValidaJwtModelFactory.New: IValidaJwtModelFactory;
 begin

@@ -32,7 +32,9 @@ uses
   App in 'src\App.pas',
   ValidaJwt.Controller.Usuario.Test in 'src\test\controller\ValidaJwt.Controller.Usuario.Test.pas',
   ValidaJwt.App.Test in 'src\test\controller\ValidaJwt.App.Test.pas',
-  ValidaJwt.Dto.Resp.ApiError in 'src\dto\ValidaJwt.Dto.Resp.ApiError.pas';
+  ValidaJwt.Dto.Resp.ApiError in 'src\dto\ValidaJwt.Dto.Resp.ApiError.pas',
+  ValidaJwt.Model.Autenticacao in 'src\model\ValidaJwt.Model.Autenticacao.pas',
+  ValidaJwt.Dto.Resp.Autenticacao in 'src\dto\ValidaJwt.Dto.Resp.Autenticacao.pas';
 
 { keep comment here to protect the following conditional from being removed by the IDE when adding a unit }
 {$IFNDEF TESTINSIGHT}

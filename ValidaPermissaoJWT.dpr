@@ -22,7 +22,9 @@ uses
   ValidaJwt.Model.Dao.TokenUsuario.InMemory in 'src\model\dao\in-memory\ValidaJwt.Model.Dao.TokenUsuario.InMemory.pas',
   ValidaJwt.Model.Usuario in 'src\model\ValidaJwt.Model.Usuario.pas',
   ValidaJwt.Dto.Req.ManutUsuario in 'src\dto\ValidaJwt.Dto.Req.ManutUsuario.pas',
-  ValidaJwt.Dto.Resp.ApiError in 'src\dto\ValidaJwt.Dto.Resp.ApiError.pas';
+  ValidaJwt.Dto.Resp.ApiError in 'src\dto\ValidaJwt.Dto.Resp.ApiError.pas',
+  ValidaJwt.Model.Autenticacao in 'src\model\ValidaJwt.Model.Autenticacao.pas',
+  ValidaJwt.Dto.Resp.Autenticacao in 'src\dto\ValidaJwt.Dto.Resp.Autenticacao.pas';
 
 var LApp: TApp;
 begin
