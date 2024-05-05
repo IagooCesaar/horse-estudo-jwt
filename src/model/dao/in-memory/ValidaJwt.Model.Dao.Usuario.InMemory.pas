@@ -24,6 +24,8 @@ type
 
     { IValidaJwtModelDaoUsuario }
     function CriarUsuario(ADto: TValidaJwtDtoReqCriarUsuario): TValidaJwtModelEntityUsuario;
+    function ObterPorId(AId: Integer): TValidaJwtModelEntityUsuario;
+    function ObterPorEmail(AEmail: string): TValidaJwtModelEntityUsuario;
   end;
 
 implementation
@@ -79,6 +81,26 @@ begin
   if not Assigned(FDao)
   then FDao := TValidaJwtModelDaoUsuarioInMemory.Create;
   Result := FDao;
+end;
+
+function TValidaJwtModelDaoUsuarioInMemory.ObterPorEmail(AEmail: string): TValidaJwtModelEntityUsuario;
+begin
+  Result := nil;
+  for var LUsuario in FRepository
+  do begin
+    if LUsuario.Email = AEmail
+    then Result := Clone(LUsuario);
+  end;
+end;
+
+function TValidaJwtModelDaoUsuarioInMemory.ObterPorId(AId: Integer): TValidaJwtModelEntityUsuario;
+begin
+  Result := nil;
+  for var LUsuario in FRepository
+  do begin
+    if LUsuario.Id = AId
+    then Result := Clone(LUsuario);
+  end;
 end;
 
 class destructor TValidaJwtModelDaoUsuarioInMemory.UnInitialize;
