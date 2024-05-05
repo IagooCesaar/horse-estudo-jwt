@@ -21,6 +21,8 @@ type
     property DataExpiracao: TDateTime read FDataExpiracao write FDataExpiracao;
   end;
 
+  TValidaJwtModelEntityTokenUsuarioLista = TObjectList<TValidaJwtModelEntityTokenUsuario>;
+
 implementation
 
 { TValidaJwtModelEntityTokenUsuario }

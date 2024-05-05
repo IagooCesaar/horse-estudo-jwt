@@ -17,7 +17,9 @@ uses
   ValidaJwt.Model.Interfaces in 'src\model\ValidaJwt.Model.Interfaces.pas',
   ValidaJwt.Model.Factory in 'src\model\ValidaJwt.Model.Factory.pas',
   ValidaJwt.Model.Dao.Factory in 'src\model\dao\ValidaJwt.Model.Dao.Factory.pas',
-  ValidaJwt.Model.Dao.Interfaces in 'src\model\dao\ValidaJwt.Model.Dao.Interfaces.pas';
+  ValidaJwt.Model.Dao.Interfaces in 'src\model\dao\ValidaJwt.Model.Dao.Interfaces.pas',
+  ValidaJwt.Model.Dao.Usuario.InMemory in 'src\model\dao\in-memory\ValidaJwt.Model.Dao.Usuario.InMemory.pas',
+  ValidaJwt.Model.Dao.TokenUsuario.InMemory in 'src\model\dao\in-memory\ValidaJwt.Model.Dao.TokenUsuario.InMemory.pas';
 
 var LApp: TApp;
 begin

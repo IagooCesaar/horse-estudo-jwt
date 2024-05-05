@@ -6,34 +6,50 @@ uses
   ValidaJwt.Model.Dao.Interfaces;
 
 type
-  TValidaJwtModalDaoFactory = class(TNoRefCountObject,
+  TValidaJwtModelDaoFactory = class(TNoRefCountObject,
     IValidaJwtModelDaoFactory)
   private
-    class var FFactory: TValidaJwtModalDaoFactory;
+    class var FFactory: TValidaJwtModelDaoFactory;
   public
     class function New: IValidaJwtModelDaoFactory;
     class destructor UnInitialize;
+
     { IValidaJwtModelDaoFactory }
+    function Usuario: IValidaJwtModelDaoUsuario;
+    function TokenUsuario: IValidaJwtModelDaoTokenUsuario;
   end;
 
 implementation
 
 uses
-  System.SysUtils;
+  System.SysUtils,
+
+  ValidaJwt.Model.Dao.Usuario.InMemory,
+  ValidaJwt.Model.Dao.TokenUsuario.InMemory;
 
 { TValidaJwtModalDaoFactory }
 
-class function TValidaJwtModalDaoFactory.New: IValidaJwtModelDaoFactory;
+class function TValidaJwtModelDaoFactory.New: IValidaJwtModelDaoFactory;
 begin
   if not Assigned(FFactory)
-  then FFactory := TValidaJwtModalDaoFactory.Create;
+  then FFactory := TValidaJwtModelDaoFactory.Create;
 
   Result := FFactory;
 end;
 
-class destructor TValidaJwtModalDaoFactory.UnInitialize;
+function TValidaJwtModelDaoFactory.TokenUsuario: IValidaJwtModelDaoTokenUsuario;
+begin
+  Result := TValidaJwtModelDaoTokenUsuarioInMemory.GetInstance;
+end;
+
+class destructor TValidaJwtModelDaoFactory.UnInitialize;
 begin
   FreeAndNil(FFactory);
+end;
+
+function TValidaJwtModelDaoFactory.Usuario: IValidaJwtModelDaoUsuario;
+begin
+  Result := TValidaJwtModelDaoUsuarioInMemory.GetInstance;
 end;
 
 end.
