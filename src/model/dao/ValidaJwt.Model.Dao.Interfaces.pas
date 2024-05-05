@@ -19,6 +19,7 @@ type
 
   IValidaJwtModelDaoTokenUsuario = interface
     ['{8C067757-22F5-4C86-AC8A-AF9616B0ACD3}']
+    function CriarToken(AEntity: TValidaJwtModelEntityTokenUsuario): TValidaJwtModelEntityTokenUsuario;
   end;
 
   IValidaJwtModelDaoFactory = interface

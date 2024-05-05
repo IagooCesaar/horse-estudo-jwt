@@ -22,13 +22,16 @@ implementation
 
 uses
   System.SysUtils,
+  System.DateUtils,
 
   Horse,
   Horse.Exception,
   Horse.JsonInterceptor.Helpers,
 
   ValidaJwt.Model.Factory,
-  ValidaJwt.Model.Dao.Factory;
+  ValidaJwt.Model.Dao.Factory,
+
+  ValidaJwt.Model.Entity.TokenUsuario;
 
 { TValidaJwtModelAutenticacao }
 
@@ -60,7 +63,20 @@ begin
   Result.Token := 'token';
   Result.RefreshToken := 'refresh-token';
 
+  var LToken := TValidaJwtModelEntityTokenUsuario.Create;
+  LToken.IdUsuario := LUsuario.Id;
+  LToken.Token := Result.Token;
+  LToken.RefreshToken := Result.RefreshToken;
+  LToken.DataCricao := Now;
+  LToken.DataExpiracao := IncMinute(Now, 30);
+
+  var LTokenUsuario := TValidaJwtModelDaoFactory.New
+    .TokenUsuario
+    .CriarToken(LToken);
+
   LUsuario.Free;
+  LToken.Free;
+  LTokenUsuario.Free;
 end;
 
 class function TValidaJwtModelAutenticacao.New: IValidaJwtModelAutenticacao;

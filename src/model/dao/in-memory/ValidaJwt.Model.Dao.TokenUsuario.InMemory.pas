@@ -22,6 +22,7 @@ type
     class destructor UnInitialize;
 
     { IValidaJwtModelDaoTokenUsuario }
+    function CriarToken(AEntity: TValidaJwtModelEntityTokenUsuario): TValidaJwtModelEntityTokenUsuario;
 
   end;
 
@@ -47,6 +48,20 @@ end;
 constructor TValidaJwtModelDaoTokenUsuarioInMemory.Create;
 begin
   FRepository := TValidaJwtModelEntityTokenUsuarioLista.Create;
+end;
+
+function TValidaJwtModelDaoTokenUsuarioInMemory.CriarToken(
+  AEntity: TValidaJwtModelEntityTokenUsuario): TValidaJwtModelEntityTokenUsuario;
+begin
+  Result := nil;
+  FRepository.Add(TValidaJwtModelEntityTokenUsuario.Create);
+  FRepository.Last.IdUsuario := AEntity.IdUsuario;
+  FRepository.Last.Token := AEntity.Token;
+  FRepository.Last.RefreshToken := AEntity.RefreshToken;
+  FRepository.Last.DataCricao := Now;
+  FRepository.Last.DataExpiracao := AEntity.DataExpiracao;
+
+  Result := Clone(FRepository.Last);
 end;
 
 destructor TValidaJwtModelDaoTokenUsuarioInMemory.Destroy;
