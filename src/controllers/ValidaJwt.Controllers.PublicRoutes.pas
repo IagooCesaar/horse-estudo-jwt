@@ -43,11 +43,8 @@ end;
 
 procedure Registry(const AContext: string);
 begin
-  var LGroup := '/usuarios';
-  var LTag := 'Usuários';
-
   THorse
-    .Group.Prefix(AContext + LGroup)
+    .Group.Prefix(AContext + '/usuarios')
     .Post('/', PostCriarUsuario)
   ;
 end;

@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{226B93F1-E4FA-4E4B-AF30-0D78495BA4EA}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="ValidaPermissaoJWT.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="ValidaPermissaoJWT_Test.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="ValidaPermissaoJWT">
+        <MSBuild Projects="ValidaPermissaoJWT.dproj"/>
+    </Target>
+    <Target Name="ValidaPermissaoJWT:Clean">
+        <MSBuild Projects="ValidaPermissaoJWT.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ValidaPermissaoJWT:Make">
+        <MSBuild Projects="ValidaPermissaoJWT.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="ValidaPermissaoJWT_Test">
+        <MSBuild Projects="ValidaPermissaoJWT_Test.dproj"/>
+    </Target>
+    <Target Name="ValidaPermissaoJWT_Test:Clean">
+        <MSBuild Projects="ValidaPermissaoJWT_Test.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="ValidaPermissaoJWT_Test:Make">
+        <MSBuild Projects="ValidaPermissaoJWT_Test.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="ValidaPermissaoJWT;ValidaPermissaoJWT_Test"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="ValidaPermissaoJWT:Clean;ValidaPermissaoJWT_Test:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="ValidaPermissaoJWT:Make;ValidaPermissaoJWT_Test:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
