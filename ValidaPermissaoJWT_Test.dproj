@@ -72,7 +72,7 @@
         <UsingDelphiRTL>true</UsingDelphiRTL>
         <Icon_MainIcon>$(BDS)\bin\delphi_PROJECTICON.ico</Icon_MainIcon>
         <Icns_MainIcns>$(BDS)\bin\delphi_PROJECTICNS.icns</Icns_MainIcns>
-        <DCC_UnitSearchPath>$(DUnitX);$(DCC_UnitSearchPath);modules\.dcp;modules\.dcu;modules;modules\handle-exception\src;modules\horse\src;modules\horse-compression\src;modules\horse-jsoninterceptor\src;modules\jhonson\src;modules\restrequest4delphi\src</DCC_UnitSearchPath>
+        <DCC_UnitSearchPath>$(DUnitX);modules\.dcp;modules\.dcu;modules;modules\handle-exception\src;modules\horse\src;modules\horse-compression\src;modules\horse-jsoninterceptor\src;modules\jhonson\src;modules\restrequest4delphi\src;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <SanitizedProjectName>ValidaPermissaoJWT_Test</SanitizedProjectName>
         <DCC_MapFile>3</DCC_MapFile>
         <VerInfo_Locale>1046</VerInfo_Locale>
@@ -151,6 +151,7 @@
         <DCCReference Include="src\App.pas"/>
         <DCCReference Include="src\test\controller\ValidaJwt.Controller.Usuario.Test.pas"/>
         <DCCReference Include="src\test\controller\ValidaJwt.App.Test.pas"/>
+        <DCCReference Include="src\dto\ValidaJwt.Dto.Resp.ApiError.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

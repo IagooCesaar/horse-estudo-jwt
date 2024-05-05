@@ -64,7 +64,7 @@
         <DCC_K>false</DCC_K>
         <DCC_Namespace>System;Xml;Data;Datasnap;Web;Soap;$(DCC_Namespace)</DCC_Namespace>
         <SanitizedProjectName>ValidaPermissaoJWT</SanitizedProjectName>
-        <DCC_UnitSearchPath>$(DCC_UnitSearchPath);modules\.dcp;modules\.dcu;modules;modules\handle-exception\src;modules\horse\src;modules\horse-compression\src;modules\horse-jsoninterceptor\src;modules\jhonson\src;modules\restrequest4delphi\src</DCC_UnitSearchPath>
+        <DCC_UnitSearchPath>modules\.dcp;modules\.dcu;modules;modules\handle-exception\src;modules\horse\src;modules\horse-compression\src;modules\horse-jsoninterceptor\src;modules\jhonson\src;modules\restrequest4delphi\src;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
     </PropertyGroup>
     <PropertyGroup Condition="'$(Base_Android)'!=''">
         <DCC_UsePackage>fmx;DbxCommonDriver;bindengine;IndyIPCommon;emsclient;FireDACCommonDriver;IndyProtocols;IndyIPClient;dbxcds;bindcompfmx;FireDACSqliteDriver;DbxClientDriver;soapmidas;fmxFireDAC;dbexpress;inet;DataSnapCommon;fmxase;dbrtl;FireDACDBXDriver;CustomIPTransport;DBXInterBaseDriver;IndySystem;bindcomp;FireDACCommon;IndyCore;RESTBackendComponents;bindcompdbx;rtl;RESTComponents;DBXSqliteDriver;IndyIPServer;dsnapxml;DataSnapClient;DataSnapProviderClient;DataSnapFireDAC;emsclientfiredac;FireDAC;FireDACDSDriver;xmlrtl;tethering;dsnap;CloudService;DataSnapNativeClient;soaprtl;soapserver;FireDACIBDriver;$(DCC_UsePackage)</DCC_UsePackage>
@@ -190,6 +190,7 @@
         <DCCReference Include="src\model\dao\in-memory\ValidaJwt.Model.Dao.TokenUsuario.InMemory.pas"/>
         <DCCReference Include="src\model\ValidaJwt.Model.Usuario.pas"/>
         <DCCReference Include="src\dto\ValidaJwt.Dto.Req.ManutUsuario.pas"/>
+        <DCCReference Include="src\dto\ValidaJwt.Dto.Resp.ApiError.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

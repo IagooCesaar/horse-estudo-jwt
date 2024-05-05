@@ -21,7 +21,8 @@ uses
   ValidaJwt.Model.Dao.Usuario.InMemory in 'src\model\dao\in-memory\ValidaJwt.Model.Dao.Usuario.InMemory.pas',
   ValidaJwt.Model.Dao.TokenUsuario.InMemory in 'src\model\dao\in-memory\ValidaJwt.Model.Dao.TokenUsuario.InMemory.pas',
   ValidaJwt.Model.Usuario in 'src\model\ValidaJwt.Model.Usuario.pas',
-  ValidaJwt.Dto.Req.ManutUsuario in 'src\dto\ValidaJwt.Dto.Req.ManutUsuario.pas';
+  ValidaJwt.Dto.Req.ManutUsuario in 'src\dto\ValidaJwt.Dto.Req.ManutUsuario.pas',
+  ValidaJwt.Dto.Resp.ApiError in 'src\dto\ValidaJwt.Dto.Resp.ApiError.pas';
 
 var LApp: TApp;
 begin

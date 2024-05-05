@@ -4,7 +4,8 @@ interface
 
 uses
   App,
-  RESTRequest4D;
+  RESTRequest4D,
+  ValidaJwt.Dto.Resp.ApiError;
 
 type
   TValidaJwtAppTest = class
@@ -16,6 +17,7 @@ type
     destructor Destroy; override;
 
     function PreparaRequest: IRequest;
+    function ParteError(ABody: string): TValidaJwtDTORespApiError;
 
     class destructor UnInitialize;
     class function GetInstance: TValidaJwtAppTest;
@@ -24,7 +26,8 @@ type
 implementation
 
 uses
-  System.SysUtils;
+  System.SysUtils,
+  Horse.JsonInterceptor.Helpers;
 
 { TValidaJwtAppTest }
 
@@ -52,6 +55,11 @@ begin
   if not Assigned(FApiTest)
   then FApiTest := TValidaJwtAppTest.Create;
   Result := FApiTest;
+end;
+
+function TValidaJwtAppTest.ParteError(ABody: string): TValidaJwtDTORespApiError;
+begin
+  Result := TJson.ClearJsonAndConvertToObject<TValidaJwtDTORespApiError>(ABody);
 end;
 
 function TValidaJwtAppTest.PreparaRequest: IRequest;
