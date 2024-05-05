@@ -3,20 +3,19 @@ unit ValidaJwt.App.Test;
 interface
 
 uses
-  App;
+  App,
+  RESTRequest4D;
 
 type
   TValidaJwtAppTest = class
   private
     FApp: TApp;
-
     class var FApiTest: TValidaJwtAppTest;
-    function getBaseUrl: string;
   public
     constructor Create;
     destructor Destroy; override;
 
-    property BaseURL: string read getBaseUrl;
+    function PreparaRequest: IRequest;
 
     class destructor UnInitialize;
     class function GetInstance: TValidaJwtAppTest;
@@ -48,16 +47,17 @@ begin
   inherited;
 end;
 
-function TValidaJwtAppTest.getBaseUrl: string;
-begin
-  Result := FApp.BaseURL;
-end;
-
 class function TValidaJwtAppTest.GetInstance: TValidaJwtAppTest;
 begin
   if not Assigned(FApiTest)
   then FApiTest := TValidaJwtAppTest.Create;
   Result := FApiTest;
+end;
+
+function TValidaJwtAppTest.PreparaRequest: IRequest;
+begin
+  Result := TRequest.New
+    .BaseURL(FApp.BaseURL);
 end;
 
 class destructor TValidaJwtAppTest.UnInitialize;
