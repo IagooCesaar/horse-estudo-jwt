@@ -72,7 +72,7 @@
         <UsingDelphiRTL>true</UsingDelphiRTL>
         <Icon_MainIcon>$(BDS)\bin\delphi_PROJECTICON.ico</Icon_MainIcon>
         <Icns_MainIcns>$(BDS)\bin\delphi_PROJECTICNS.icns</Icns_MainIcns>
-        <DCC_UnitSearchPath>$(DUnitX);$(DCC_UnitSearchPath);modules\.dcp;modules\.dcu;modules;modules\delphi-jose-jwt\Source\Common;modules\delphi-jose-jwt\Source\JOSE;modules\delphi-jose-jwt\Source;modules\handle-exception\src;modules\horse\src;modules\horse-compression\src;modules\horse-jsoninterceptor\src;modules\jhonson\src;modules\restrequest4delphi\src</DCC_UnitSearchPath>
+        <DCC_UnitSearchPath>$(DUnitX);modules\.dcp;modules\.dcu;modules;modules\delphi-jose-jwt\Source\Common;modules\delphi-jose-jwt\Source\JOSE;modules\delphi-jose-jwt\Source;modules\handle-exception\src;modules\horse\src;modules\horse-compression\src;modules\horse-jsoninterceptor\src;modules\jhonson\src;modules\restrequest4delphi\src;$(DCC_UnitSearchPath)</DCC_UnitSearchPath>
         <SanitizedProjectName>ValidaPermissaoJWT_Test</SanitizedProjectName>
         <DCC_MapFile>3</DCC_MapFile>
         <VerInfo_Locale>1046</VerInfo_Locale>
@@ -155,6 +155,7 @@
         <DCCReference Include="src\model\ValidaJwt.Model.Autenticacao.pas"/>
         <DCCReference Include="src\dto\ValidaJwt.Dto.Resp.Autenticacao.pas"/>
         <DCCReference Include="src\dto\ValidaJwt.Dto.Req.Autenticacao.pas"/>
+        <DCCReference Include="src\test\controller\ValidaJwt.Controller.Autenticacao.Test.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
