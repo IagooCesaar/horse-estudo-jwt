@@ -2,9 +2,16 @@ unit ValidaJwt.Model.Dao.Interfaces;
 
 interface
 
+uses
+  ValidaJwt.Model.Entity.Usuario,
+  ValidaJwt.Model.Entity.TokenUsuario,
+
+  ValidaJwt.Dto.Req.ManutUsuario;
+
 type
   IValidaJwtModelDaoUsuario = interface
     ['{BBA1B307-01B0-43F0-AA4E-3C17C2AAB044}']
+    function CriarUsuario(ADto: TValidaJwtDtoReqCriarUsuario): TValidaJwtModelEntityUsuario;
   end;
 
   IValidaJwtModelDaoTokenUsuario = interface

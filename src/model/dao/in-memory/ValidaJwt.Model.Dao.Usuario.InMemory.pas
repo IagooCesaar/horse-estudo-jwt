@@ -4,7 +4,8 @@ interface
 
 uses
   ValidaJwt.Model.Dao.Interfaces,
-  ValidaJwt.Model.Entity.Usuario;
+  ValidaJwt.Model.Entity.Usuario,
+  ValidaJwt.Dto.Req.ManutUsuario;
 
 type
   TValidaJwtModelDaoUsuarioInMemory = class(TNoRefCountObject,
@@ -22,7 +23,7 @@ type
     class destructor UnInitialize;
 
     { IValidaJwtModelDaoUsuario }
-
+    function CriarUsuario(ADto: TValidaJwtDtoReqCriarUsuario): TValidaJwtModelEntityUsuario;
   end;
 
 implementation
@@ -47,6 +48,24 @@ end;
 constructor TValidaJwtModelDaoUsuarioInMemory.Create;
 begin
   FRepository := TValidaJwtModelEntityUsuarioLista.Create;
+end;
+
+function TValidaJwtModelDaoUsuarioInMemory.CriarUsuario(
+  ADto: TValidaJwtDtoReqCriarUsuario): TValidaJwtModelEntityUsuario;
+var LId: Integer;
+begin
+  if FRepository.Count = 0
+  then LId := 1
+  else LId := FRepository.Last.Id + 1;
+
+  FRepository.Add(TValidaJwtModelEntityUsuario.Create);
+  FRepository.Last.Id := LId;
+  FRepository.Last.Nome := ADto.Nome;
+  FRepository.Last.Email := ADto.Email;
+  FRepository.Last.Senha := ADto.Senha;
+  FRepository.Last.DataCriacao := Now;
+
+  Result := Clone(FRepository.Last);
 end;
 
 destructor TValidaJwtModelDaoUsuarioInMemory.Destroy;

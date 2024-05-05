@@ -20,7 +20,8 @@ uses
   ValidaJwt.Model.Dao.Interfaces in 'src\model\dao\ValidaJwt.Model.Dao.Interfaces.pas',
   ValidaJwt.Model.Dao.Usuario.InMemory in 'src\model\dao\in-memory\ValidaJwt.Model.Dao.Usuario.InMemory.pas',
   ValidaJwt.Model.Dao.TokenUsuario.InMemory in 'src\model\dao\in-memory\ValidaJwt.Model.Dao.TokenUsuario.InMemory.pas',
-  ValidaJwt.Model.Usuario in 'src\model\ValidaJwt.Model.Usuario.pas';
+  ValidaJwt.Model.Usuario in 'src\model\ValidaJwt.Model.Usuario.pas',
+  ValidaJwt.Dto.Req.ManutUsuario in 'src\dto\ValidaJwt.Dto.Req.ManutUsuario.pas';
 
 var LApp: TApp;
 begin
