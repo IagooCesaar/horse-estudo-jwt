@@ -10,7 +10,10 @@ uses
   ValidaJwt.Controllers.Registry in 'src\controllers\ValidaJwt.Controllers.Registry.pas',
   ValidaJwt.Controllers.PrivateRoutes in 'src\controllers\ValidaJwt.Controllers.PrivateRoutes.pas',
   ValidaJwt.Controllers.AuthenticationRoutes in 'src\controllers\ValidaJwt.Controllers.AuthenticationRoutes.pas',
-  ValidaJwt.Controllers.PublicRoutes in 'src\controllers\ValidaJwt.Controllers.PublicRoutes.pas';
+  ValidaJwt.Controllers.PublicRoutes in 'src\controllers\ValidaJwt.Controllers.PublicRoutes.pas',
+  ValidaJwt.Model.Entity.Usuario in 'src\model\entity\ValidaJwt.Model.Entity.Usuario.pas',
+  ValidaJwt.Dto.Resp.Perfil in 'src\dto\ValidaJwt.Dto.Resp.Perfil.pas',
+  ValidaJwt.Model.Entity.TokenUsuario in 'src\model\entity\ValidaJwt.Model.Entity.TokenUsuario.pas';
 
 var LApp: TApp;
 begin
