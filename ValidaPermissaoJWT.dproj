@@ -188,6 +188,7 @@
         <DCCReference Include="src\model\dao\ValidaJwt.Model.Dao.Interfaces.pas"/>
         <DCCReference Include="src\model\dao\in-memory\ValidaJwt.Model.Dao.Usuario.InMemory.pas"/>
         <DCCReference Include="src\model\dao\in-memory\ValidaJwt.Model.Dao.TokenUsuario.InMemory.pas"/>
+        <DCCReference Include="src\model\ValidaJwt.Model.Usuario.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
