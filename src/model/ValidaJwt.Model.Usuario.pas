@@ -25,13 +25,42 @@ type
 implementation
 
 uses
-  ValidaJwt.Model.Factory;
+  System.SysUtils,
+
+  Horse,
+  Horse.Exception,
+  Horse.JsonInterceptor.Helpers,
+
+  ValidaJwt.Model.Dao.Factory;
 
 { TValidaJwtModelUsuario }
 
 function TValidaJwtModelUsuario.CriarUsuario(ADto: TValidaJwtDtoReqCriarUsuario): TValidaJwtDtoRespPerfil;
 begin
+  var LVal := TJson.RevalidateSetters
+    <TValidaJwtDtoReqCriarUsuario>(ADto);
+  LVal.Free;
 
+  var LExisteEmail := TValidaJwtModelDaoFactory.New
+    .Usuario
+    .ObterPorEmail(ADto.Email);
+  try
+    if Assigned(LExisteEmail)
+    then raise EHorseException.New
+      .Status(THTTPStatus.PreconditionFailed)
+      .&Unit(Self.UnitName)
+      .Error(Format('Já existe um usuário cadastrado com o e-mail %s.', [ADto.Email]));
+  finally
+    FreeAndNil(LExisteEmail);
+  end;
+
+
+  var LUsuario := TValidaJwtModelDaoFactory.New
+    .Usuario
+    .CriarUsuario(ADto);
+
+  Result := Mapper(LUsuario);
+  LUsuario.Free;
 end;
 
 function TValidaJwtModelUsuario.Mapper(
