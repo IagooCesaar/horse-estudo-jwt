@@ -182,6 +182,10 @@
         <DCCReference Include="src\model\entity\ValidaJwt.Model.Entity.Usuario.pas"/>
         <DCCReference Include="src\dto\ValidaJwt.Dto.Resp.Perfil.pas"/>
         <DCCReference Include="src\model\entity\ValidaJwt.Model.Entity.TokenUsuario.pas"/>
+        <DCCReference Include="src\model\ValidaJwt.Model.Interfaces.pas"/>
+        <DCCReference Include="src\model\ValidaJwt.Model.Factory.pas"/>
+        <DCCReference Include="src\model\dao\ValidaJwt.Model.Dao.Factory.pas"/>
+        <DCCReference Include="src\model\dao\ValidaJwt.Model.Dao.Interfaces.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

@@ -11,6 +11,9 @@ procedure Registry(const AContext: string);
 
 implementation
 
+uses
+  ValidaJwt.Model.Factory;
+
 procedure Registry(const AContext: string);
 begin
 

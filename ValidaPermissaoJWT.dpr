@@ -13,7 +13,11 @@ uses
   ValidaJwt.Controllers.PublicRoutes in 'src\controllers\ValidaJwt.Controllers.PublicRoutes.pas',
   ValidaJwt.Model.Entity.Usuario in 'src\model\entity\ValidaJwt.Model.Entity.Usuario.pas',
   ValidaJwt.Dto.Resp.Perfil in 'src\dto\ValidaJwt.Dto.Resp.Perfil.pas',
-  ValidaJwt.Model.Entity.TokenUsuario in 'src\model\entity\ValidaJwt.Model.Entity.TokenUsuario.pas';
+  ValidaJwt.Model.Entity.TokenUsuario in 'src\model\entity\ValidaJwt.Model.Entity.TokenUsuario.pas',
+  ValidaJwt.Model.Interfaces in 'src\model\ValidaJwt.Model.Interfaces.pas',
+  ValidaJwt.Model.Factory in 'src\model\ValidaJwt.Model.Factory.pas',
+  ValidaJwt.Model.Dao.Factory in 'src\model\dao\ValidaJwt.Model.Dao.Factory.pas',
+  ValidaJwt.Model.Dao.Interfaces in 'src\model\dao\ValidaJwt.Model.Dao.Interfaces.pas';
 
 var LApp: TApp;
 begin
