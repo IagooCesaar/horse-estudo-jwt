@@ -11,6 +11,7 @@ uses
 type
   IValidaJwtModelDaoUsuario = interface
     ['{BBA1B307-01B0-43F0-AA4E-3C17C2AAB044}']
+    function ObterTodos: TValidaJwtModelEntityUsuarioLista;
     function CriarUsuario(ADto: TValidaJwtDtoReqCriarUsuario): TValidaJwtModelEntityUsuario;
     function ObterPorId(AId: Integer): TValidaJwtModelEntityUsuario;
     function ObterPorEmail(AEmail: string): TValidaJwtModelEntityUsuario;

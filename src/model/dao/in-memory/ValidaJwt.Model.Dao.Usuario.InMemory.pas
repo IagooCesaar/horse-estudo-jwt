@@ -23,6 +23,7 @@ type
     class destructor UnInitialize;
 
     { IValidaJwtModelDaoUsuario }
+    function ObterTodos: TValidaJwtModelEntityUsuarioLista;
     function CriarUsuario(ADto: TValidaJwtDtoReqCriarUsuario): TValidaJwtModelEntityUsuario;
     function ObterPorId(AId: Integer): TValidaJwtModelEntityUsuario;
     function ObterPorEmail(AEmail: string): TValidaJwtModelEntityUsuario;
@@ -101,6 +102,13 @@ begin
     if LUsuario.Id = AId
     then Result := Clone(LUsuario);
   end;
+end;
+
+function TValidaJwtModelDaoUsuarioInMemory.ObterTodos: TValidaJwtModelEntityUsuarioLista;
+begin
+  Result := TValidaJwtModelEntityUsuarioLista.Create;
+  for var LUsuario in FRepository
+  do Result.Add(Clone(LUsuario));
 end;
 
 class destructor TValidaJwtModelDaoUsuarioInMemory.UnInitialize;
