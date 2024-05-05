@@ -24,7 +24,8 @@ uses
   ValidaJwt.Dto.Req.ManutUsuario in 'src\dto\ValidaJwt.Dto.Req.ManutUsuario.pas',
   ValidaJwt.Dto.Resp.ApiError in 'src\dto\ValidaJwt.Dto.Resp.ApiError.pas',
   ValidaJwt.Model.Autenticacao in 'src\model\ValidaJwt.Model.Autenticacao.pas',
-  ValidaJwt.Dto.Resp.Autenticacao in 'src\dto\ValidaJwt.Dto.Resp.Autenticacao.pas';
+  ValidaJwt.Dto.Resp.Autenticacao in 'src\dto\ValidaJwt.Dto.Resp.Autenticacao.pas',
+  ValidaJwt.Dto.Req.Autenticacao in 'src\dto\ValidaJwt.Dto.Req.Autenticacao.pas';
 
 var LApp: TApp;
 begin

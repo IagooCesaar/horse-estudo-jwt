@@ -5,6 +5,7 @@ interface
 uses
   ValidaJwt.Dto.Req.ManutUsuario,
   ValidaJwt.Dto.Resp.Perfil,
+  ValidaJwt.Dto.Req.Autenticacao,
   ValidaJwt.Dto.Resp.Autenticacao;
 
 type
@@ -17,7 +18,7 @@ type
 
   IValidaJwtModelAutenticacao = interface
     ['{A061A150-9F53-46DC-A6CD-0DEF67F407CC}']
-    // Criar Sessão (token)
+    function CriarSessao(ADto: TValidaJwtDtoReqAutenticacao): TValidaJwtDtoRespAutenticacao;
     // Criar refresh token
     // Obter perfil
   end;

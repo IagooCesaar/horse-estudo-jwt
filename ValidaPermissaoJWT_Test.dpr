@@ -34,7 +34,8 @@ uses
   ValidaJwt.App.Test in 'src\test\controller\ValidaJwt.App.Test.pas',
   ValidaJwt.Dto.Resp.ApiError in 'src\dto\ValidaJwt.Dto.Resp.ApiError.pas',
   ValidaJwt.Model.Autenticacao in 'src\model\ValidaJwt.Model.Autenticacao.pas',
-  ValidaJwt.Dto.Resp.Autenticacao in 'src\dto\ValidaJwt.Dto.Resp.Autenticacao.pas';
+  ValidaJwt.Dto.Resp.Autenticacao in 'src\dto\ValidaJwt.Dto.Resp.Autenticacao.pas',
+  ValidaJwt.Dto.Req.Autenticacao in 'src\dto\ValidaJwt.Dto.Req.Autenticacao.pas';
 
 { keep comment here to protect the following conditional from being removed by the IDE when adding a unit }
 {$IFNDEF TESTINSIGHT}

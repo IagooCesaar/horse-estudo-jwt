@@ -193,6 +193,7 @@
         <DCCReference Include="src\dto\ValidaJwt.Dto.Resp.ApiError.pas"/>
         <DCCReference Include="src\model\ValidaJwt.Model.Autenticacao.pas"/>
         <DCCReference Include="src\dto\ValidaJwt.Dto.Resp.Autenticacao.pas"/>
+        <DCCReference Include="src\dto\ValidaJwt.Dto.Req.Autenticacao.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>
