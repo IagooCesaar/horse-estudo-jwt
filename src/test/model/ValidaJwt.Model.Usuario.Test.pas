@@ -7,7 +7,7 @@ uses
 
 type
   [TestFixture]
-  ValidaJwtModelUsuarioTest = class
+  TValidaJwtModelUsuarioTest = class
   private
     function RepeteString(ATexto: string; AQtd: Integer): string;
   public
@@ -55,14 +55,14 @@ uses
 
 { ValidaJwtModelUsuarioTest }
 
-function ValidaJwtModelUsuarioTest.RepeteString(ATexto: string; AQtd: Integer): string;
+function TValidaJwtModelUsuarioTest.RepeteString(ATexto: string; AQtd: Integer): string;
 begin
   Result := '';
   for var I := 1 to AQtd
   do Result := Result + ATexto;
 end;
 
-procedure ValidaJwtModelUsuarioTest.Test_CriarUsuario;
+procedure TValidaJwtModelUsuarioTest.Test_CriarUsuario;
 begin
   var LDto := TValidaJwtDtoReqCriarUsuario.Create;
   LDto.Nome := 'Nome do Usuário';
@@ -82,7 +82,7 @@ begin
   LUsuario.Free;
 end;
 
-procedure ValidaJwtModelUsuarioTest.Test_NaoCriarUsuario(
+procedure TValidaJwtModelUsuarioTest.Test_NaoCriarUsuario(
   ANome, AEmail, ASenha, AErro: string;
   ARepeteNome, ARepeteEmail, ARepeteSenha: Integer
 );
@@ -116,7 +116,7 @@ begin
   end;
 end;
 
-procedure ValidaJwtModelUsuarioTest.Test_NaoCriarUsuario_EmailExistente;
+procedure TValidaJwtModelUsuarioTest.Test_NaoCriarUsuario_EmailExistente;
 begin
   var LDto := TValidaJwtDtoReqCriarUsuario.Create;
   LDto.Nome := 'Nome do Usuário';
@@ -142,6 +142,6 @@ begin
 end;
 
 initialization
-  TDUnitX.RegisterTestFixture(ValidaJwtModelUsuarioTest);
+  TDUnitX.RegisterTestFixture(TValidaJwtModelUsuarioTest);
 
 end.

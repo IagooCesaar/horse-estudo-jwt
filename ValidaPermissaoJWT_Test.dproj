@@ -149,6 +149,8 @@
         <DCCReference Include="src\model\entity\ValidaJwt.Model.Entity.TokenUsuario.pas"/>
         <DCCReference Include="src\model\entity\ValidaJwt.Model.Entity.Usuario.pas"/>
         <DCCReference Include="src\App.pas"/>
+        <DCCReference Include="src\test\controller\ValidaJwt.Controller.Usuario.Test.pas"/>
+        <DCCReference Include="src\test\controller\ValidaJwt.App.Test.pas"/>
         <BuildConfiguration Include="Base">
             <Key>Base</Key>
         </BuildConfiguration>

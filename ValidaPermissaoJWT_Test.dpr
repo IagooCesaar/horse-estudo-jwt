@@ -29,7 +29,9 @@ uses
   ValidaJwt.Model.Dao.Usuario.InMemory in 'src\model\dao\in-memory\ValidaJwt.Model.Dao.Usuario.InMemory.pas',
   ValidaJwt.Model.Entity.TokenUsuario in 'src\model\entity\ValidaJwt.Model.Entity.TokenUsuario.pas',
   ValidaJwt.Model.Entity.Usuario in 'src\model\entity\ValidaJwt.Model.Entity.Usuario.pas',
-  App in 'src\App.pas';
+  App in 'src\App.pas',
+  ValidaJwt.Controller.Usuario.Test in 'src\test\controller\ValidaJwt.Controller.Usuario.Test.pas',
+  ValidaJwt.App.Test in 'src\test\controller\ValidaJwt.App.Test.pas';
 
 { keep comment here to protect the following conditional from being removed by the IDE when adding a unit }
 {$IFNDEF TESTINSIGHT}
